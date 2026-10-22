@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>منظّم المستندات</title>
+<style>
+:root{--bg:#0d1117;--sf:#161d2b;--sf2:#1e2940;--tx:#e8edf5;--mu:#8b97ad;--ac:#3b82f6;--bd:#2a3550;--ok:#22c55e;--wr:#f59e0b;--bad:#ef4444;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-t=light]{--bg:#f3f5f9;--sf:#fff;--sf2:#e8eef8;--tx:#1a2233;--mu:#5d6a82;--bd:#d5dcea}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,"Segoe UI",Tahoma,Arial,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:8px;align-items:center;padding:10px 12px;background:var(--bg);border-bottom:1px solid var(--bd)}
+header input{flex:1;min-width:0}
+input,select,textarea{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--bd);background:var(--sf);color:var(--tx);font:inherit}
+textarea{min-height:70px}
+label{display:block;margin:10px 0 4px;color:var(--mu);font-size:.85rem}
+main{padding:14px;padding-bottom:40px;max-width:760px;margin:auto}
+h2{margin:4px 0 12px;font-size:1.25rem}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:12px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.st{text-align:center;cursor:pointer;margin:0}.st .n{font-size:1.9rem;font-weight:800}.st .i{font-size:1.8rem}.st small{color:var(--mu)}
+.qa{display:flex;flex-wrap:wrap;gap:8px}
+.qa button{flex:1 1 40%;display:flex;gap:8px;align-items:center;justify-content:center;padding:14px 8px;border-radius:14px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;font-weight:600}
+.ib{border:0;background:var(--sf2);border-radius:10px;font-size:1.15rem;width:40px;height:40px;color:var(--tx)}
+.bt{border:0;border-radius:12px;padding:11px 16px;background:var(--ac);color:#fff;font:inherit;font-weight:700}
+.bt.g{background:var(--sf2);color:var(--tx)}.bt.bad{background:var(--bad)}.bt.wa{background:#25d366}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.row .bt{flex:1}
+.it{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.th{width:58px;height:58px;border-radius:12px;background:var(--sf2);display:flex;align-items:center;justify-content:center;font-size:1.8rem;overflow:hidden;flex:none}
+.th img{width:100%;height:100%;object-fit:cover}
+.inf{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.inf b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+small{color:var(--mu)}
+.ac{display:flex;flex-wrap:wrap;gap:6px;width:100%;flex-basis:100%;justify-content:flex-start}.sp .ac{width:auto;flex-basis:auto}.lb{display:none}.it .ib{width:auto;min-width:44px;padding:0 12px;font-size:.95rem;font-weight:600}.it .lb{display:inline}.ib.e{border:1px solid #2563eb}.ib.d{border:1px solid #ef4444}
+.bg{display:inline-block;font-size:.8rem;padding:2px 8px;border-radius:20px;width:max-content}
+.bg.bad{background:#ef444422;color:var(--bad)}.bg.wr{background:#f59e0b22;color:var(--wr)}.bg.ok{background:#22c55e22;color:var(--ok)}
+.em{text-align:center;color:var(--mu);padding:30px 10px}
+.bar{height:14px;background:var(--sf2);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+#ov{position:fixed;inset:0;background:#0009;z-index:20;display:none}#ov.on{display:block}
+#dr{position:fixed;top:0;bottom:0;right:0;width:min(82%,320px);background:#111a2b;color:#fff;z-index:21;transform:translateX(105%);transition:.25s;overflow:auto;padding-top:env(safe-area-inset-top,0px)}
+#dr.on{transform:none}
+#dr h3{margin:0;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+#dr a{display:flex;gap:14px;align-items:center;padding:13px 18px;font-size:1.05rem;border-inline-start:4px solid transparent;color:#fff;text-decoration:none}
+#dr a span{font-size:1.6rem}#dr a.on{background:#22304d;border-color:var(--ac)}#dr .ib{background:#22304d;color:#fff}.ib.e{background:#2563eb44}.ib.d{background:#ef444444}
+#md{position:fixed;inset:0;background:#000a;z-index:30;display:none;align-items:center;justify-content:center;padding:14px}#md.on{display:flex}
+.mb{background:var(--sf);border-radius:18px;padding:16px;width:100%;max-width:460px;max-height:90vh;overflow:auto}
+.mb h3{margin:0 0 8px}.pv{text-align:center}.pv img{max-width:100%;max-height:52vh;border-radius:12px}.big{font-size:4rem}
+#ts{position:fixed;bottom:calc(30px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:11px 18px;border-radius:24px;z-index:40;display:none;font-weight:600;max-width:90%;text-align:center}
+.sp{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.fl{cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+ <button class="ib" onclick="drawer(1)" title="القائمة">☰</button>
+ <input id="q" type="search" placeholder="بحث في الملفات والمجلدات والوسوم..." oninput="S.q=this.value.trim();R()">
+ <button class="ib" id="tg" onclick="theme()" title="الوضع الليلي/النهاري">🌓</button>
+</header>
+<main id="main"></main>
+<div id="ov" onclick="drawer(0)"></div>
+<nav id="dr"></nav>
+<div id="md" onclick="if(event.target==this)X()"></div>
+<div id="ts"></div>
+<input type="file" id="fi" accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.txt" multiple hidden>
+<input type="file" id="im" accept="image/*" multiple hidden>
+<input type="file" id="sc" accept="image/*" capture="environment" hidden>
+<input type="file" id="rs" accept=".json" hidden>
+<script>
+window.onerror=function(m,s,l){var e=document.getElementById('main');if(e)e.innerHTML='<div style="padding:14px">⚠️ خطأ: '+m+' (سطر '+l+')</div>'};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let D={items:[],folders:[],log:[],shares:[],set:{theme:'dark',email:'',fs:16,lastBackup:''}};
+try{const r=localStorage.getItem('docmgr');if(r)D=Object.assign(D,JSON.parse(r))}catch(e){}
+const S={page:'home',folder:null,q:''};
+const MENU=[['home','🏠','الرئيسية'],['files','📁','الملفات والمجلدات'],['renew','🔄','التجديدات'],['favs','⭐','المفضلة'],['quick','📌','الوصول السريع'],['trash','🗑️','سلة المحذوفات'],['log','📋','سجل النشاط'],['shares','📤','المشاركات'],['storage','💾','التخزين'],['status','📊','حالة التطبيق'],['settings','⚙️','الإعدادات']];
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function save(){try{localStorage.setItem('docmgr',JSON.stringify(D));return true}catch(e){toast('⚠️ المساحة ممتلئة، احذف بعض الملفات');return false}}
+function log(t){D.log.unshift({id:uid(),t,d:new Date().toISOString()});D.log=D.log.slice(0,300)}
+let tt;function toast(m){const t=$('#ts');t.textContent=m;t.style.display='block';clearTimeout(tt);tt=setTimeout(()=>t.style.display='none',2200)}
+const fmt=n=>n>1e6?(n/1e6).toFixed(1)+' MB':Math.max(1,Math.ceil(n/1e3))+' KB';
+const fdate=d=>new Date(d).toLocaleString('ar',{dateStyle:'medium',timeStyle:'short'});
+const isImg=i=>(i.mime||'').startsWith('image');
+const fname=id=>{const f=D.folders.find(x=>x.id===id);return f?f.name:'الرئيسي'};
+const days=i=>Math.ceil((new Date(i.expiry)-new Date().setHours(0,0,0,0))/864e5);
+function badge(i){if(!i.expiry)return'';const d=days(i);return d<0?`<span class="bg bad">⛔ منتهي منذ ${-d} يوم</span>`:d<=30?`<span class="bg wr">⚠️ ينتهي خلال ${d} يوم</span>`:`<span class="bg ok">✅ ساري (${d} يوم)</span>`}
+const b=(a,i,id,t)=>`<button class="ib ${a=='edit'?'e':a=='del'?'d':''}" title="${t}" onclick="A('${a}','${id}')">${i}<span class="lb"> ${t}</span></button>`;
+function card(i){const th=isImg(i)?`<img src="${i.data}">`:'📄';
+ const ac=i.deleted?b('prev','👁',i.id,'معاينة')+b('edit','✏️',i.id,'تعديل')+b('restore','↩️',i.id,'استرجاع')+b('purge','❌',i.id,'حذف نهائي'):
+ b('prev','👁',i.id,'معاينة')+b('edit','✏️',i.id,'تعديل')+b('del','🗑',i.id,'حذف')+b('fav',i.fav?'⭐':'☆',i.id,'المفضلة')+b('pin','📌',i.id,'وصول سريع')+b('share','💬',i.id,'مشاركة واتساب');
+ return`<div class="card it"><div class="th" onclick="A('prev','${i.id}')">${th}</div><div class="inf"><b>${esc(i.name)}</b><small>${esc(fname(i.folderId))} • ${fmt(i.size||0)}</small>${badge(i)}${(i.tags||[]).length?`<small>${i.tags.map(t=>'#'+esc(t)).join(' ')}</small>`:''}</div><div class="ac">${ac}</div></div>`}
+const list=(a,m)=>a.length?a.map(card).join(''):`<div class="em">${m||'لا توجد عناصر'}<br><br><button class="bt" onclick="$('#fi').click()">➕ إضافة ملف</button> <button class="bt g" onclick="$('#sc').click()">📷 مسح مستند</button> <button class="bt g" onclick="demo()">🧪 بيانات تجريبية</button></div>`;
+const act=()=>D.items.filter(i=>!i.deleted);
+const renewable=()=>act().filter(i=>i.expiry&&days(i)<=30);
+function folderCard(f){return`<div class="card it"><div class="th fl" onclick="F('open','${f.id}')">📁</div><div class="inf fl" onclick="F('open','${f.id}')"><b>${esc(f.name)}</b><small>${act().filter(i=>i.folderId===f.id).length} ملف • ${D.folders.filter(x=>x.parent===f.id).length} مجلد</small></div><div class="ac"><button class="ib" title="فتح" onclick="F('open','${f.id}')">👁<span class="lb"> فتح</span></button><button class="ib e" title="تعديل" onclick="F('edit','${f.id}')">✏️<span class="lb"> تعديل</span></button><button class="ib d" title="حذف" onclick="F('del','${f.id}')">🗑<span class="lb"> حذف</span></button></div></div>`}
+const DEV=`<div style="padding:14px 18px;border-top:1px solid #2a3550;line-height:2"><b>👨‍💻 المطور: عدنان صبياني</b><br><a href="tel:+966542103430" style="display:inline;padding:0;border:0">📞 00966542103430</a><br><a href="https://wa.me/96509600071" target="_blank" style="display:inline;padding:0;border:0;color:#25d366">💬 0096509600071</a></div>`;
+const P={
+home(){const t=act();const st=[['files','📄',t.length,'المستندات'],['renew','🔄',renewable().length,'قابلة للتجديد'],['favs','⭐',t.filter(i=>i.fav).length,'المفضلة'],['quick','📌',t.filter(i=>i.pin).length,'وصول سريع'],['trash','🗑️',D.items.length-t.length,'سلة المحذوفات'],['shares','📤',D.shares.length,'المشاركات']];
+ return`<div class="card"><div class="qa"><button onclick="$('#im').click()">🖼️ إضافة صورة</button><button onclick="$('#sc').click()">📷 مسح مستند</button><button onclick="$('#q').focus()">🔍 بحث</button><button onclick="go('favs')">⭐ المفضلة</button><button onclick="$('#fi').click()">📎 إضافة ملف</button><button onclick="F('new')">📁 مجلد جديد</button></div></div><div class="grid">${st.map(s=>`<div class="card st" onclick="go('${s[0]}')"><div class="i">${s[1]}</div><div class="n">${s[2]}</div><small>${s[3]}</small></div>`).join('')}</div><h2>آخر المضاف</h2>${list(t.slice().reverse().slice(0,5),'ابدأ بإضافة صورة أو مسح مستند')}`},
+files(){const cur=D.folders.find(f=>f.id===S.folder);let path='';for(let f=cur;f;f=D.folders.find(x=>x.id===f.parent))path=' ◂ '+esc(f.name)+path;
+ const fs=D.folders.filter(f=>(f.parent||null)===S.folder),its=act().filter(i=>(i.folderId||null)===S.folder);
+ return`<div class="sp"><h2>📁 الملفات والمجلدات</h2></div><div class="sp"><small>الرئيسي${path}</small>${S.folder?`<button class="bt g" onclick="F('up')">⬆️ رجوع</button>`:''}</div><div class="row"><button class="bt" onclick="F('new')">📁 مجلد</button><button class="bt g" onclick="$('#fi').click()">📎 ملف</button></div><br>${fs.map(folderCard).join('')}${list(its,fs.length?'':'المجلد فارغ')}`},
+renew(){return`<h2>🔄 التجديدات</h2><small>المستندات التي لها تاريخ انتهاء، الأقرب أولًا</small><br><br>`+list(act().filter(i=>i.expiry).sort((a,b)=>a.expiry>b.expiry?1:-1),'أضف تاريخ انتهاء من زر التعديل ✏️')},
+favs(){return`<h2>⭐ المفضلة</h2>`+list(act().filter(i=>i.fav),'لا توجد مفضلة بعد')},
+quick(){return`<h2>📌 الوصول السريع</h2>`+list(act().filter(i=>i.pin),'ثبّت المستندات المهمة بزر 📌')},
+trash(){const t=D.items.filter(i=>i.deleted);return`<h2>🗑️ سلة المحذوفات</h2>${t.length?`<button class="bt bad" onclick="C('تفريغ السلة نهائيًا؟',emptyTrash)">تفريغ السلة</button><br><br>`:''}`+list(t,'السلة فارغة')},
+log(){return`<div class="sp"><h2>📋 سجل النشاط</h2>${D.log.length?`<button class="bt g" onclick="C('مسح السجل كاملًا؟',()=>{D.log=[];save();R()})">مسح الكل</button>`:''}</div>`+(D.log.length?D.log.map(l=>`<div class="card sp"><div><b>${esc(l.t)}</b><br><small>${fdate(l.d)}</small></div><div class="ac"><button class="ib e" title="تعديل" onclick="LE('${l.id}')">✏️</button><button class="ib d" title="حذف" onclick="L('${l.id}')">🗑</button></div></div>`).join(''):'<div class="em">لا يوجد نشاط</div>')},
+shares(){return`<h2>📤 المشاركات</h2>`+(D.shares.length?D.shares.map(s=>{const it=D.items.find(i=>i.id===s.itemId);return`<div class="card sp"><div><b>💬 ${esc(s.name)}</b><br><small>${fdate(s.d)}</small></div><div class="ac">${it&&!it.deleted?`<button class="ib" title="معاينة" onclick="A('prev','${it.id}')">👁</button><button class="ib" title="إعادة الإرسال" onclick="A('share','${it.id}')">💬</button>`:''}<button class="ib e" title="تعديل" onclick="SE('${s.id}')">✏️</button><button class="ib d" title="حذف" onclick="SH('${s.id}')">🗑</button></div></div>`}).join(''):'<div class="em">لم تتم مشاركة أي مستند. استخدم زر 💬 على أي ملف</div>')},
+storage(){const u=JSON.stringify(D).length,p=Math.min(100,u/5e6*100);return`<h2>💾 التخزين</h2><div class="card"><div class="sp"><b>المساحة المستخدمة</b><span>${fmt(u)} من ‎5 MB</span></div><br><div class="bar"><i style="width:${p}%"></i></div><small>${p.toFixed(1)}٪</small></div><div class="card"><b>📧 النسخ الاحتياطي بالإيميل</b><label>البريد الإلكتروني (يُكتب يدويًا)</label><input id="em" type="email" inputmode="email" dir="ltr" placeholder="name@example.com" value="${esc(D.set.email)}"><div class="row"><button class="bt g" onclick="$('#em').focus()">✏️ تعديل البريد</button><button class="bt bad" onclick="C('حذف البريد المحفوظ؟',()=>{D.set.email='';save();R()})">🗑 حذف البريد</button></div><div class="row"><button class="bt" onclick="backup()">📤 نسخ احتياطي الآن</button><button class="bt g" onclick="$('#rs').click()">📥 استرجاع نسخة</button></div><small>آخر نسخة: ${D.set.lastBackup?fdate(D.set.lastBackup):'لم تتم بعد'}</small><br><small>سيُنزَّل ملف النسخة ثم يُفتح الإيميل لتُرفقه وتُرسله.</small></div>`},
+status(){const u=JSON.stringify(D).length/5e6,ex=act().filter(i=>i.expiry&&days(i)<0).length;const r=(ok,t,v)=>`<div class="card sp"><span>${ok?'✅':'⚠️'} ${t}</span><b>${v}</b></div>`;
+ return`<h2>📊 حالة التطبيق</h2>`+r(navigator.onLine,'الاتصال',navigator.onLine?'متصل':'غير متصل')+r(u<.8,'المساحة',(u*100).toFixed(0)+'٪')+r(!ex,'مستندات منتهية',ex)+r(!!D.set.email,'بريد النسخ الاحتياطي',D.set.email?'محدد':'غير محدد')+r(!!D.set.lastBackup,'آخر نسخة احتياطية',D.set.lastBackup?fdate(D.set.lastBackup):'لا توجد')+r(1,'عدد المستندات',act().length)+r(1,'عدد المجلدات',D.folders.length)+`<div class="row"><button class="bt g" onclick="go('storage')">✏️ تعديل بريد النسخ</button><button class="bt bad" onclick="C('تفريغ السلة؟',emptyTrash)">🗑 تفريغ السلة</button></div>`},
+settings(){return`<h2>⚙️ الإعدادات</h2><div class="card"><label>المظهر</label><select onchange="D.set.theme=this.value;save();R()"><option value="dark" ${D.set.theme=='dark'?'selected':''}>🌙 ليلي</option><option value="light" ${D.set.theme=='light'?'selected':''}>☀️ نهاري</option></select><label>حجم الخط</label><select onchange="D.set.fs=+this.value;save();R()">${[14,16,18,20].map(n=>`<option ${D.set.fs==n?'selected':''}>${n}</option>`).join('')}</select><label>بريد النسخ الاحتياطي</label><input type="email" dir="ltr" value="${esc(D.set.email)}" onchange="D.set.email=this.value.trim();save();toast('تم الحفظ')"><div class="row"><button class="bt g" onclick="go('storage')">✏️ تعديل</button><button class="bt bad" onclick="C('حذف البريد؟',()=>{D.set.email='';save();R()})">🗑 حذف</button></div></div><div class="card"><b>👨‍💻 المطور: عدنان صبياني</b><div class="row"><a class="bt" href="tel:+966542103430" style="text-decoration:none;text-align:center">📞 00966542103430</a><a class="bt wa" href="https://wa.me/96509600071" target="_blank" style="text-decoration:none;text-align:center">💬 0096509600071</a></div></div><button class="bt bad" onclick="C('حذف جميع البيانات نهائيًا؟',()=>{localStorage.removeItem('docmgr');location.reload()})">🧨 مسح كل البيانات</button>`},
+search(){const q=S.q.toLowerCase(),m=i=>[i.name,i.notes,(i.tags||[]).join(' '),fname(i.folderId)].join(' ').toLowerCase().includes(q);
+ const fs=D.folders.filter(f=>f.name.toLowerCase().includes(q));return`<h2>🔍 نتائج «${esc(S.q)}»</h2>${fs.map(folderCard).join('')}${list(act().filter(m),'لا توجد نتائج')}`}
+};
+function R(){const r=document.documentElement;r.dataset.t=D.set.theme;r.style.fontSize=(D.set.fs||16)+'px';$('#main').innerHTML=S.q?P.search():P[S.page]();
+ $('#dr').innerHTML='<h3>📂 المستندات <button class="ib" onclick="drawer(0)" title="إغلاق">✖</button></h3>'+MENU.map(m=>`<a href="#" class="${S.page==m[0]?'on':''}" onclick="go('${m[0]}');return false"><span>${m[1]}</span>${m[2]}</a>`).join('')+DEV}
+function go(p){S.page=p;S.q='';$('#q').value='';if(p=='files')S.folder=null;drawer(0);R();scrollTo(0,0)}
+function drawer(o){$('#dr').classList.toggle('on',!!o);$('#ov').classList.toggle('on',!!o)}
+function theme(){D.set.theme=D.set.theme=='dark'?'light':'dark';save();R()}
+function M(h){const m=$('#md');m.innerHTML='<div class="mb">'+h+'</div>';m.classList.add('on')}
+function X(){const m=$('#md');m.classList.remove('on');m.innerHTML=''}
+function C(msg,fn){M(`<p>${esc(msg)}</p><div class="row"><button class="bt bad" id="cy">نعم</button><button class="bt g" onclick="X()">إلغاء</button></div>`);$('#cy').onclick=()=>{X();fn()}}
+function A(a,id){const it=D.items.find(x=>x.id===id);if(!it)return;
+ if(a=='prev')return prev(id);if(a=='edit')return edit(id);if(a=='share')return share(id);
+ if(a=='del')return C('نقل «'+it.name+'» إلى سلة المحذوفات؟',()=>{it.deleted=1;it.pin=0;log('حذف: '+it.name);save();R();toast('🗑 نُقل إلى السلة')});
+ if(a=='purge')return C('حذف «'+it.name+'» نهائيًا؟',()=>{D.items=D.items.filter(x=>x!==it);D.shares=D.shares.filter(s=>s.itemId!==id);log('حذف نهائي: '+it.name);save();R()});
+ if(a=='fav'){it.fav=!it.fav;log((it.fav?'إضافة للمفضلة: ':'إزالة من المفضلة: ')+it.name)}
+ if(a=='pin'){it.pin=!it.pin;log((it.pin?'تثبيت: ':'إلغاء تثبيت: ')+it.name)}
+ if(a=='restore'){it.deleted=0;log('استرجاع: '+it.name);toast('↩️ تم الاسترجاع')}
+ save();R()}
+function emptyTrash(){const n=D.items.filter(i=>i.deleted).length;D.items=D.items.filter(i=>!i.deleted);log('تفريغ السلة ('+n+')');save();R()}
+function L(id){D.log=D.log.filter(l=>l.id!==id);save();R()}
+function SH(id){C('حذف سجل المشاركة؟',()=>{D.shares=D.shares.filter(s=>s.id!==id);save();R()})}
+function LE(id){const l=D.log.find(x=>x.id===id);M(`<h3>✏️ تعديل</h3><input id="le" value="${esc(l.t)}"><div class="row"><button class="bt" id="ls">حفظ</button><button class="bt g" onclick="X()">إلغاء</button></div>`);$('#ls').onclick=()=>{l.t=$('#le').value.trim()||l.t;save();X();R()}}
+function SE(id){const s=D.shares.find(x=>x.id===id);M(`<h3>✏️ تعديل</h3><input id="le" value="${esc(s.name)}"><div class="row"><button class="bt" id="ls">حفظ</button><button class="bt g" onclick="X()">إلغاء</button></div>`);$('#ls').onclick=()=>{s.name=$('#le').value.trim()||s.name;save();X();R()}}
+function demo(){const svg=(t,c)=>'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="260"><rect width="400" height="260" rx="20" fill="${c}"/><text x="200" y="145" font-size="34" fill="#fff" text-anchor="middle" font-family="Arial">${t}</text></svg>`);
+const d=n=>new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+const fo={id:uid(),name:'مستنداتي',parent:null};D.folders.push(fo);
+[['الهوية الوطنية','#2563eb',20,fo.id],['رخصة القيادة','#dc2626',-5,fo.id],['استمارة المركبة','#16a34a',200,null]].forEach(x=>D.items.push({id:uid(),name:x[0],mime:'image/svg+xml',data:svg(x[0],x[1]),size:2000,folderId:x[3],tags:['تجريبي'],expiry:d(x[2]),created:new Date().toISOString()}));
+log('إضافة بيانات تجريبية');save();R();toast('تمت إضافة بيانات تجريبية')}
+function prev(id){const it=D.items.find(x=>x.id===id);
+ M(`<h3>${esc(it.name)}</h3><div class="pv">${isImg(it)?`<img src="${it.data}">`:`<div class="big">📄</div><a class="bt" href="${it.data}" download="${esc(it.name)}" target="_blank">⬇️ فتح / تنزيل</a>`}</div><small>${esc(fname(it.folderId))} • ${fmt(it.size||0)} • ${fdate(it.created)}</small>${it.expiry?'<br>'+badge(it):''}${it.notes?`<p>${esc(it.notes)}</p>`:''}<div class="row">${it.deleted?'':`<button class="bt wa" onclick="X();share('${id}')">💬 واتساب</button><button class="bt g" onclick="X();edit('${id}')">✏️ تعديل</button><button class="bt bad" onclick="X();A('del','${id}')">🗑 حذف</button>`}<button class="bt g" onclick="X()">إغلاق</button></div>`)}
+function folderOpts(sel,skip){let o=`<option value="">الرئيسي</option>`;const walk=(p,pre)=>D.folders.filter(f=>(f.parent||null)===p&&f.id!==skip).forEach(f=>{o+=`<option value="${f.id}" ${f.id===sel?'selected':''}>${pre}${esc(f.name)}</option>`;walk(f.id,pre+'— ')});walk(null,'');return o}
+function edit(id,isNew){const it=D.items.find(x=>x.id===id);
+ M(`<h3>${isNew?'📝 بيانات المستند':'✏️ تعديل'}</h3><label>الاسم</label><input id="e1" value="${esc(it.name)}"><label>المجلد</label><select id="e2">${folderOpts(it.folderId)}</select><label>الوسوم (افصل بفاصلة)</label><input id="e3" value="${esc((it.tags||[]).join('، '))}"><label>تاريخ الانتهاء (للتجديد)</label><input id="e4" type="date" value="${it.expiry||''}"><label>ملاحظات</label><textarea id="e5">${esc(it.notes||'')}</textarea><div class="row"><button class="bt" id="sv">حفظ</button><button class="bt g" onclick="X()">إلغاء</button></div>`);
+ $('#sv').onclick=()=>{it.name=$('#e1').value.trim()||it.name;it.folderId=$('#e2').value||null;it.tags=$('#e3').value.split(/[,،]/).map(s=>s.trim()).filter(Boolean);it.expiry=$('#e4').value;it.notes=$('#e5').value.trim();log((isNew?'إضافة: ':'تعديل: ')+it.name);save();X();R();toast('✅ تم الحفظ')}}
+function F(a,id){const f=D.folders.find(x=>x.id===id);
+ if(a=='open'){S.page='files';S.q='';$('#q').value='';S.folder=id;return R()}
+ if(a=='up'){const c=D.folders.find(x=>x.id===S.folder);S.folder=c?c.parent||null:null;return R()}
+ if(a=='del')return C('حذف المجلد «'+f.name+'»؟ تُنقل محتوياته للمجلد الأعلى.',()=>{D.items.forEach(i=>{if(i.folderId===id)i.folderId=f.parent||null});D.folders.forEach(x=>{if(x.parent===id)x.parent=f.parent||null});D.folders=D.folders.filter(x=>x!==f);log('حذف مجلد: '+f.name);save();R()});
+ const nw=a=='new';M(`<h3>${nw?'📁 مجلد جديد':'✏️ تعديل المجلد'}</h3><label>الاسم</label><input id="f1" value="${nw?'':esc(f.name)}"><label>داخل</label><select id="f2">${folderOpts(nw?S.folder:f.parent,nw?null:id)}</select><div class="row"><button class="bt" id="fs">حفظ</button><button class="bt g" onclick="X()">إلغاء</button></div>`);
+ $('#fs').onclick=()=>{const n=$('#f1').value.trim();if(!n)return toast('اكتب اسم المجلد');if(nw){D.folders.push({id:uid(),name:n,parent:$('#f2').value||null});log('مجلد جديد: '+n)}else{f.name=n;f.parent=$('#f2').value||null;log('تعديل مجلد: '+n)}save();X();R()}}
+function compress(file){return new Promise(res=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const k=Math.min(1,1280/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.72))};im.onerror=()=>res(null);im.src=u})}
+function readURL(f){return new Promise(r=>{const x=new FileReader();x.onload=()=>r(x.result);x.onerror=()=>r(null);x.readAsDataURL(f)})}
+async function addFiles(files){let last;for(const f of files){let data,mime=f.type;if(mime.startsWith('image')){data=await compress(f);mime='image/jpeg'}else{if(f.size>1.5e6){toast('الملف كبير (الحد 1.5MB)');continue}data=await readURL(f)}
+ if(!data)continue;last={id:uid(),name:f.name.replace(/\.[^.]+$/,'')||'مستند',mime,data,size:Math.round(data.length*.75),folderId:S.page=='files'?S.folder:null,tags:[],created:new Date().toISOString()};D.items.push(last)}
+ if(last){if(!save()){D.items.pop();return}R();edit(last.id,1)}}
+['fi','im','sc'].forEach(k=>$('#'+k).onchange=e=>{addFiles([...e.target.files]);e.target.value=''});
+function share(id){const it=D.items.find(x=>x.id===id);
+ M(`<h3>💬 مشاركة عبر واتساب</h3><div class="pv">${isImg(it)?`<img src="${it.data}">`:'<div class="big">📄</div>'}<br><b>${esc(it.name)}</b></div><label>نص الرسالة</label><textarea id="st">${esc(it.name)}</textarea><div class="row"><button class="bt wa" id="sd">إرسال عبر واتساب</button><button class="bt g" onclick="X()">إلغاء</button></div><small>سيُرفق الملف إن دعم جهازك ذلك، وإلا يُرسل النص فقط.</small>`);
+ $('#sd').onclick=async()=>{const txt=$('#st').value;let ok=false;
+  try{const bl=await(await fetch(it.data)).blob(),ext=(it.mime||'').split('/')[1]||'bin',f=new File([bl],it.name.replace(/[\\/]/g,'')+'.'+ext.replace('jpeg','jpg'),{type:it.mime});
+   if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],text:txt});ok=true}}catch(e){if(e&&e.name=='AbortError')return}
+  if(!ok){window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');toast('أُرسل النص فقط، أرفق الملف يدويًا')}
+  D.shares.unshift({id:uid(),itemId:id,name:it.name,d:new Date().toISOString()});log('مشاركة واتساب: '+it.name);save();X();R()}}
+function backup(){const em=($('#em').value||'').trim();if(!/^\S+@\S+\.\S+$/.test(em))return toast('أدخل بريدًا صحيحًا');D.set.email=em;D.set.lastBackup=new Date().toISOString();log('نسخة احتياطية إلى '+em);save();
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(D)],{type:'application/json'}));a.download='backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();
+ setTimeout(()=>{location.href='mailto:'+em+'?subject='+encodeURIComponent('نسخة احتياطية - منظّم المستندات')+'&body='+encodeURIComponent('أرفق ملف النسخة الاحتياطية الذي تم تنزيله.')},600);R()}
+$('#rs').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const j=JSON.parse(await f.text());if(!Array.isArray(j.items))throw 0;C('استبدال البيانات الحالية بالنسخة؟',()=>{D=Object.assign(D,j);save();R();toast('✅ تم الاسترجاع')})}catch(x){toast('ملف غير صالح')}};
+/* زر الرجوع: اضغط مرة أخرى للخروج */
+let arm=false;try{history.pushState({},'')}catch(e){}
+addEventListener('popstate',()=>{if($('#md').classList.contains('on')){X()}else if($('#dr').classList.contains('on')){drawer(0)}else if(S.q||S.page!='home'){S.q='';$('#q').value='';S.page='home';R()}else if(arm){history.back();return}else{arm=true;toast('اضغط مرة أخرى للخروج');setTimeout(()=>arm=false,2000)}try{history.pushState({},'')}catch(e){}});
+R();
+</script>
+</body>
+</html>
